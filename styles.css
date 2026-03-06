@@ -1,0 +1,518 @@
+/* ============================================
+   VARIABLES Y RESET
+   ============================================ */
+:root {
+  /* Paleta modo oscuro (default) */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #141414;
+  --text-primary: #f5f0e8;
+  --text-secondary: #a89880;
+  --accent: #c9a84c;
+  --accent-dim: rgba(201, 168, 76, 0.15);
+  --border: rgba(201, 168, 76, 0.2);
+  --roman-color: rgba(201, 168, 76, 0.08);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --transition-theme: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f5f0e8;
+  --bg-secondary: #ede8df;
+  --bg-card: #faf7f2;
+  --text-primary: #2c1a0e;
+  --text-secondary: #6b4c35;
+  --accent: #8b5e2a;
+  --accent-dim: rgba(139, 94, 42, 0.1);
+  --border: rgba(139, 94, 42, 0.25);
+  --roman-color: rgba(139, 94, 42, 0.06);
+  --shadow: rgba(44, 26, 14, 0.15);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: none; /* oculta cursor nativo */
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: var(--transition-theme);
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+
+/* ============================================
+   CURSOR PERSONALIZADO
+   ============================================ */
+.custom-cursor {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, opacity 0.3s ease, border-color 0.3s ease;
+  opacity: 0.7;
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease;
+}
+
+/* ============================================
+   CANVAS PARTÍCULAS
+   ============================================ */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ============================================
+   TOGGLE TEMA
+   ============================================ */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0.4rem 0.9rem;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-theme), box-shadow 0.3s ease;
+  box-shadow: 0 2px 20px var(--shadow);
+}
+
+.theme-toggle:hover {
+  box-shadow: 0 4px 30px var(--accent-dim);
+  border-color: var(--accent);
+}
+
+.toggle-icon {
+  font-size: 1rem;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+[data-theme="dark"] .sun  { opacity: 0.3; transform: scale(0.8); }
+[data-theme="dark"] .moon { opacity: 1;   transform: scale(1); }
+[data-theme="light"] .sun  { opacity: 1;   transform: scale(1); }
+[data-theme="light"] .moon { opacity: 0.3; transform: scale(0.8); }
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 780px;
+}
+
+.hero-eyebrow {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  min-height: 4.8rem;
+  letter-spacing: 0.02em;
+}
+
+/* Cursor del typewriter */
+.hero-title::after {
+  content: '|';
+  color: var(--accent);
+  animation: blink 0.8s step-end infinite;
+}
+
+.hero-title.typing-done::after {
+  display: none;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.6s forwards;
+}
+
+.hero-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  border-left: 2px solid var(--accent);
+  padding-left: 1.2rem;
+  text-align: left;
+  margin: 0 auto 2.5rem;
+  max-width: 500px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.9s forwards;
+}
+
+.hero-quote cite {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  font-style: normal;
+  letter-spacing: 0.1em;
+}
+
+.scroll-cta {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.2s forwards;
+}
+
+.scroll-cta:hover {
+  border-color: var(--accent);
+}
+
+/* ============================================
+   SECCIONES GENERALES
+   ============================================ */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 1.5rem;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.section-subheading {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin-bottom: 4rem;
+  letter-spacing: 0.1em;
+}
+
+/* Línea decorativa bajo heading */
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--accent);
+  margin: 1rem auto 3rem;
+}
+
+/* ============================================
+   CAPÍTULOS DEL MANIFIESTO
+   ============================================ */
+.chapter-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: var(--transition-theme), box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s ease;
+}
+
+.chapter-card:hover::before {
+  transform: scaleY(1);
+}
+
+.chapter-card:hover {
+  box-shadow: 0 8px 40px var(--shadow);
+  transform: translateY(-2px);
+}
+
+.roman-numeral {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 300;
+  color: var(--roman-color);
+  line-height: 1;
+  flex-shrink: 0;
+  user-select: none;
+  transition: color 0.4s ease;
+}
+
+.chapter-card:hover .roman-numeral {
+  color: var(--accent-dim);
+}
+
+.chapter-body {
+  flex: 1;
+}
+
+.chapter-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.chapter-text {
+  font-size: 0.97rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+/* ============================================
+   DECÁLOGO
+   ============================================ */
+.decalogo-section {
+  background: var(--bg-secondary);
+  transition: var(--transition-theme);
+}
+
+.decalogo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.decalogo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: default;
+  position: relative;
+  transition: padding-left 0.3s ease;
+}
+
+.decalogo-item:last-child {
+  border-bottom: none;
+}
+
+/* Subrayado dorado animado en hover */
+.decalogo-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.decalogo-item:hover::after {
+  width: 100%;
+}
+
+.decalogo-item:hover {
+  padding-left: 0.5rem;
+}
+
+.decalogo-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+  width: 3rem;
+  line-height: 1;
+  transition: opacity 0.3s ease;
+}
+
+.decalogo-item:hover .decalogo-number {
+  opacity: 1;
+}
+
+.decalogo-content {
+  flex: 1;
+}
+
+.decalogo-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.decalogo-item:hover .decalogo-title {
+  color: var(--accent);
+}
+
+.decalogo-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  transition: var(--transition-theme);
+}
+
+.footer-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+
+.footer-sub {
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.6;
+}
+
+/* ============================================
+   ANIMACIONES FADE-IN (scroll)
+   ============================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .chapter-card {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.8rem;
+  }
+
+  .roman-numeral {
+    font-size: 3rem;
+  }
+
+  .decalogo-item {
+    gap: 1rem;
+  }
+
+  .decalogo-number {
+    font-size: 1.5rem;
+    width: 2.2rem;
+  }
+
+  html { cursor: auto; }
+  .custom-cursor, .custom-cursor-dot { display: none; }
+}

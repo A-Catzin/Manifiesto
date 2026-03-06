@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manifiesto Angel Ricardo Teh Catzin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <!-- Cursor personalizado -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-dot"></div>
+
+  <!-- Canvas para partículas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Toggle modo oscuro/claro -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+    <span class="toggle-icon sun">☀️</span>
+    <span class="toggle-icon moon">🌙</span>
+  </button>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">— Un manifiesto de vida —</p>
+      <h1 class="hero-title" id="heroTitle"></h1>
+      <p class="hero-subtitle">Un código personal de existencia, autonomía y propósito.</p>
+      <blockquote class="hero-quote">
+        "No soy el producto de mis circunstancias. Soy el producto de mis decisiones."
+        <cite>— Stephen Covey</cite>
+      </blockquote>
+      <a href="#manifiesto" class="scroll-cta">Leer el manifiesto ↓</a>
+    </div>
+  </section>
+
+  <!-- ===== MANIFIESTO SECTION ===== -->
+  <section class="section manifiesto-section" id="manifiesto">
+    <div class="container">
+      <h2 class="section-heading fade-in">El Manifiesto</h2>
+
+      <!-- Capítulo I -->
+      <article class="chapter-card fade-in">
+        <span class="roman-numeral">I</span>
+        <div class="chapter-body">
+          <h3 class="chapter-title">La Autonomía y el Individualismo</h3>
+          <p class="chapter-text">No espero que un ente superior dicte el rumbo de mi vida; yo soy el único dueño de mi destino. Mi "religión" es el amor propio y la convicción de que tengo el control sobre mis acciones. Me considero un fiel creyente del individualismo: entiendo que mi vida es mi responsabilidad y que mi valor como persona nace de mis propias capacidades y decisiones, no de pertenecer a un grupo o seguir una fe. No necesito un libro sagrado para ser una buena persona; la ética es una elección individual.</p>
+        </div>
+      </article>
+
+      <!-- Capítulo II -->
+      <article class="chapter-card fade-in">
+        <span class="roman-numeral">II</span>
+        <div class="chapter-body">
+          <h3 class="chapter-title">Responsabilidad Radical: Acción y Consecuencia</h3>
+          <p class="chapter-text">Vivo bajo una regla de oro: toda acción tiene una consecuencia. No creo en las excusas ni en culpar a la suerte o a los demás por lo que me sucede. Acepto que cada paso que doy genera un resultado, y tengo la firmeza de afrontarlo sin importar qué tan difíciles o dolorosas sean las consecuencias. Hacerse cargo de los propios actos es, para mí, la máxima expresión de madurez y libertad.</p>
+        </div>
+      </article>
+
+      <!-- Capítulo III -->
+      <article class="chapter-card fade-in">
+        <span class="roman-numeral">III</span>
+        <div class="chapter-body">
+          <h3 class="chapter-title">El Respeto y la Empatía Objetiva</h3>
+          <p class="chapter-text">El respeto es la base innegociable de la sociedad. Exijo y doy un trato basado en la objetividad. Entiendo que mi libertad individual tiene un límite claro: no incomodar ni afectar a terceros. La verdadera convivencia nace de cuidar el espacio propio tanto como el ajeno, sin que mi autenticidad se convierta en una carga para los demás.</p>
+        </div>
+      </article>
+
+      <!-- Capítulo IV -->
+      <article class="chapter-card fade-in">
+        <span class="roman-numeral">IV</span>
+        <div class="chapter-body">
+          <h3 class="chapter-title">El Aprendizaje como Motor de Vida</h3>
+          <p class="chapter-text">Me define la curiosidad constante. Me apasiona entender cómo funciona el mundo, desde los circuitos de una computadora hasta la complejidad de un debate. La educación y el aprendizaje constante son lo que le da sabor a la vida; sin ellos, caeríamos en la monotonía. Me enorgullezco de mi intelecto y de mi capacidad para ver los retos como una forma de divertirme y crecer.</p>
+        </div>
+      </article>
+
+      <!-- Capítulo V -->
+      <article class="chapter-card fade-in">
+        <span class="roman-numeral">V</span>
+        <div class="chapter-body">
+          <h3 class="chapter-title">El Éxito: Dinero para ser Libre</h3>
+          <p class="chapter-text">Busco el éxito material porque entiendo que el dinero es el medio para alcanzar mi verdadero objetivo: la libertad. No quiero ser esclavo de las circunstancias, quiero tener la capacidad de decidir sobre mi tiempo y mi vida. Aunque creo que el fin puede justificar los medios en casos excepcionales, tengo claro que hay líneas rojas que definen quién soy.</p>
+        </div>
+      </article>
+
+      <!-- Capítulo VI -->
+      <article class="chapter-card fade-in">
+        <span class="roman-numeral">VI</span>
+        <div class="chapter-body">
+          <h3 class="chapter-title">La Fragilidad de la Confianza</h3>
+          <p class="chapter-text">En la amistad, busco la incondicionalidad y la capacidad de debatir pacíficamente. Valoro las mentes que cuestionan, pero que saben mantener la paz. Soy realista con la traición: puedo perdonar, pero sé que una vez que algo se rompe, aunque se repare con esmero, las grietas permanecen. Las cosas nunca vuelven a ser iguales.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== DECÁLOGO SECTION ===== -->
+  <section class="section decalogo-section" id="decalogo">
+    <div class="container">
+      <h2 class="section-heading fade-in">El Decálogo</h2>
+      <p class="section-subheading fade-in">Diez principios que rigen mi existencia.</p>
+
+      <ol class="decalogo-list">
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">01</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Soy el arquitecto de mi destino</h4>
+            <p class="decalogo-text">Mi vida depende de mis decisiones, no de fuerzas externas ni entes superiores.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">02</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Individualismo consciente</h4>
+            <p class="decalogo-text">Mi mayor compromiso es conmigo mismo y con mi propio desarrollo.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">03</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Acción y consecuencia</h4>
+            <p class="decalogo-text">Acepto que todo lo que hago tiene un resultado y tengo el valor de afrontarlo, sea bueno o malo.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">04</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Respeto objetivo</h4>
+            <p class="decalogo-text">Trato a los demás con respeto y espero lo mismo de vuelta; sin dramas, con claridad.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">05</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Empatía con límites</h4>
+            <p class="decalogo-text">Mi autenticidad termina donde empieza la incomodidad del otro. No soy una carga para nadie.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">06</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Aprendizaje infinito</h4>
+            <p class="decalogo-text">La curiosidad por saber cómo funcionan las cosas es lo que me mantiene en constante crecimiento.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">07</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">El error es mi maestro</h4>
+            <p class="decalogo-text">Las marcas de mis fallos son las lecciones que me impiden caminar en círculos.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">08</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Libertad financiera</h4>
+            <p class="decalogo-text">El dinero es la herramienta que uso para no ser esclavo de nadie y ser dueño de mi tiempo.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">09</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Confianza de cristal</h4>
+            <p class="decalogo-text">Una vez rota, la relación nunca vuelve a ser la misma; las grietas siempre quedan.</p>
+          </div>
+        </li>
+        <li class="decalogo-item fade-in">
+          <span class="decalogo-number">10</span>
+          <div class="decalogo-content">
+            <h4 class="decalogo-title">Cero egoísmo, más cooperación</h4>
+            <p class="decalogo-text">Entiendo que, aunque soy individualista, cooperar con respeto es la forma más inteligente de vivir.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-quote">"El hombre que se conoce a sí mismo es dueño del universo". — Atribuido a Sócrates</p>
+      <p class="footer-sub">Manifiesto Angel Ricardo Teh Catzin</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
